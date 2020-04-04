@@ -1,9 +1,13 @@
 import * as R from 'ramda';
 
 export interface Pokemon{
-	name: string
-	speed: number
-	type: string
+	name:{
+		english:string
+	}
+	base:{
+		Speed: number
+	}
+	type: string[]
 }
 
 //question1
@@ -28,23 +32,18 @@ export const composeMany: <T>(funcArray:((x:T)=>T)[]) => (x:T)=> T =
 //4.1
 export const maxSpeed: (poke:Pokemon[]) => Pokemon[] = 
 	(poke:Pokemon[]) => {
-		const maxSpeed = R.reduce((acc,cur) => R.max(acc,cur.speed) ,0,poke);
-		return R.filter((x:Pokemon) => x.speed === maxSpeed ,poke); 
+		const maxSpeed = R.reduce((acc,cur) => R.max(acc,cur.base.Speed) ,0,poke);
+		return R.filter((x:Pokemon) => x.base.Speed === maxSpeed ,poke); 
 	};
 
 //4.2
 export const grassType: (poke:Pokemon[]) => string[] = 
 	(poke:Pokemon[]) => {
-		const grassArray:Pokemon[] = R.filter((x:Pokemon) => x.type === 'Grass',poke);
-		return R.map((x:Pokemon) => x.name,grassArray).sort();
+		const grassArray:Pokemon[] = R.filter((x:Pokemon) => R.contains('Grass',x.type),poke);
+		return R.map((x:Pokemon) => x.name.english,grassArray).sort();
 	}
 
 //4.3
 export const uniqueTypes: (poke:Pokemon[]) => string[] = 
-	(poke:Pokemon[]) => {
-			const types:string[] = R.map((x:Pokemon) => x.type, poke);
-			return R.reduce((acc:string[],curr:string) => R.contains(curr,acc) ? acc : acc.concat([curr]),
-				[],types).sort();
-	};
-
-
+	(poke:Pokemon[]) => 
+		R.reduce((acc:string[],curr:Pokemon) => acc.concat(R.filter((t:string)=> !R.contains(t,acc) ,curr.type)), [], poke).sort();

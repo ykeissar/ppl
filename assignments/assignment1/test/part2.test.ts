@@ -28,22 +28,22 @@ describe("Assignment 1 Part 2", () => {
 
 	it("question 4",() => {
 		const pokemons:P2.Pokemon[] = [
-			{name:'Jiglipaf', speed:3,type:'Singer'},
-			{name:'Pikachu',speed:5,type:'Electrict'},
-			{name:'Zalbazor',speed:2,type:'Grass'},
-			{name:'Charizard',speed:4,type:'Fire'},
-			{name:'Balbazor',speed:5,type:'Grass'},
-			{name:'Charizard',speed:4,type:'Fire'},
-			{name:'Tharizard',speed:4,type:'Fire'}
+			{name:{english:'Jiglipaf'},base:{Speed:3},type:['Singer','Grass']},
+			{name:{english:'Pikachu'},base:{Speed:5},type:['Electrict']},
+			{name:{english:'Zalbazor'},base:{Speed:2},type:['Grass']},
+			{name:{english:'Charizard'},base:{Speed:4},type:['Fire']},
+			{name:{english:'Balbazor'},base:{Speed:5},type:['Grass','Singer']},
+			{name:{english:'Charizard'},base:{Speed:4},type:['Fire']},
+			{name:{english:'Tharizard'},base:{Speed:4},type:['Fire','Dragon']},
 		];
 
 		expect(P2.maxSpeed(pokemons)).to.eql([
-			{name:'Pikachu',speed:5,type:'Electrict'},
-			{name:'Balbazor',speed:5,type:'Grass'}
+			{name:{english:'Pikachu'},base:{Speed:5},type:['Electrict']},
+			{name:{english:'Balbazor'},base:{Speed:5},type:['Grass','Singer']},
 		]);
 
-		expect(P2.grassType(pokemons)).to.eql(['Balbazor','Zalbazor']);
+		expect(P2.grassType(pokemons)).to.eql(['Balbazor','Jiglipaf','Zalbazor']);
 
-		expect(P2.uniqueTypes(pokemons)).to.eql(['Electrict','Fire','Grass','Singer']);
+		expect(P2.uniqueTypes(pokemons)).to.eql(['Dragon','Electrict','Fire','Grass','Singer']);
 	});
 });
