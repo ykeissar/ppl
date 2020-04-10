@@ -1,0 +1,36 @@
+-------------------------------------------------------Part ------ 1----------------------------------------------------------------
+
+	( a )  Testability  > > How easy it is to check the correctness of the code, if at all. 
+
+	( b )  Domain       > > To which application domain is the paradigm best appropriate,
+		 in a manner of efficiency and applicability. 
+ 
+	(d)  Control Flow > > Which defiens the way the execution will flow while running.
+
+-------------------------------------------------------Part ------ 2----------------------------------------------------------------
+
+	( a )	( x : number , y : number )  => number = 
+				( x : number , y : number ) => { x+ y}
+
+	( b )	<T1,T2>( x:  T1[ ] )  =>  T2 = 
+				( x : T1[] ) => { x[0]}
+
+	( c )		( x : boolean , y : number ) => number = 
+				( x : boolean , y : number ) =>  {x ? y : -y }
+
+
+-------------------------------------------------------Part ------ 3----------------------------------------------------------------
+
+	Shortcut Semantics is a concept that could be employed  by methods, and reffer to 
+	an alternative and more efficient code implementation, that yeilds the same
+	output as the native implementation so we would'nt be able distinguish
+	betweem the 2 implementaion just by running it.
+
+	An example for the above can be shown by an implementataion of this 
+	concept on native version of the method 'some' ( | ) which  tells if there's
+	an itemin the database that satisfies a given predicate, by running over
+	all of the items in the database, and returning compitable answer.
+
+	A shortcht semantics version of 'some' ( | | ) would immediately stops and return
+	true if we found an item that satisfies the predicate, instead of keep running
+	over the rest of the items
