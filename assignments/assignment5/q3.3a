@@ -1,0 +1,12 @@
+graph TD
+  A["plus(Y,s(X),s(s(zero)))"] -->  |"%p1,  {Y=s(s(zero)),s(X)=zero,X_1=s(s(zero))}"| B1["natural_number(s(s(zero)))"]
+  A -->|"%p2, {(X_2=Y, Y_2=X, Z_2=s(zero)}"|B2["plus(Y,X,s(zero))"]
+  B1 -->|"%n2,{} "|C1["natural_number(s(zero))"]
+  C1 -->|"%n2,{} "|D1["natural_number(zero)"]
+  D1 -->|"%n1,{}"|E1["true"]
+  B2 -->|"%p1,{X_3=Y,X=zero,X_3=s(zero)} "|C2["natural_number(s(zero)) "]
+  C2 -->|"%n2,{} "|D2["natural_number(zero)"]
+  D2 -->|"%n1,{}"|E2["true"]
+  B2 -->|"%p2,{X_4=Y,s(Y_4)=X,s(Z_4)=s(zero))} "|C3["plus(Y,Y_4,zero)"]
+  C3 -->|"%p1,{X_5=Y,Y_4=zero,X_5=zero} "| D4["natural_number(zero) "]
+  D4 -->|"%n1,{}"|E3["true"]
