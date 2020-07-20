@@ -1,0 +1,14 @@
+graph TD
+AppExp__3["AppExp"] -->|rands| Rands__3[":"]
+AppExp__3 -->|rator| ProcExp__1
+Rands__3 --> NumExp__6["NumExp(1)"]
+Rands__3 --> NumExp__7["NumExp(2)"]
+ProcExp__1["ProcExp"] -->|args| Params__1[":"]
+ProcExp__1 -->|body| Body__2[":"]
+Params__1 --> VarDecl__3["VarDecl(x)"]
+Params__1 --> VarDecl__4["VarDecl(y)"]
+Body__2 --> AppExp__4
+AppExp__4["AppExp"] -->|rands| Rands__4[":"]
+AppExp__4 -->|rator| PrimOp__3["PrimOp(+)"]
+Rands__4 --> VarRef__3["VarRef(x)"]
+Rands__4 --> VarRef__4["VarRef(y)"]

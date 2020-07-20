@@ -214,5 +214,3 @@ const parseForExp = (varD: Sexp, params: Sexp[]): Result<ForExp> =>
             !isNumExp(cexps[0]) || !isNumExp(cexps[1]) ? makeFailure("Wrog type for for arguments"):
             makeOk(makeForExp(makeVarDecl(varD),cexps[0],cexps[1],cexps[2]))
     )
-
-console.log()
